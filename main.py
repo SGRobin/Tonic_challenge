@@ -1,16 +1,22 @@
-# This is a sample Python script.
+import matplotlib.pyplot as plt
+import operations
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Given dictionary
+data = operations.get_server_errors()
 
+# Extract keys and values
+keys = list(data.keys())
+values = list(data.values())
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Create a bar chart
+plt.figure(figsize=(10, 5))
+plt.bar(keys, values, color='blue')
+plt.xlabel('Server Name')
+plt.ylabel('Num Tickets')
+plt.title('Server Errors')
+plt.xticks(rotation=45)  # Rotate x labels for better visibility
+plt.grid(axis='y')
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Show the plot
+plt.tight_layout()
+plt.show()
