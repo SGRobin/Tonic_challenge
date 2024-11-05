@@ -1,4 +1,6 @@
 import string
+import time
+
 import constants
 import requests
 import random
@@ -41,6 +43,7 @@ def create_issue(summary_input, description_input):
 
 def generate_issues():
     delete_all_issues()
+    time.sleep(10)
     # Create 200 issues
     for i in range(200):
         # 90% chance to include server
@@ -70,7 +73,7 @@ def delete_all_issues():
     url = f"{constants.JIRA_URL}/rest/api/3/search"
     headers = {"Content-Type": "application/json"}
     start_at = 0
-    max_results = 200  # Adjust this as needed
+    max_results = 500  # Adjust this as needed
 
     while True:
         # Fetch a batch of issues
